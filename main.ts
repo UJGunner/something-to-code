@@ -68,6 +68,9 @@ Ties = 0
 Rounds = 0
 selections = 0
 basic.forever(function () {
+    if (0 == selections) {
+        selections += 3
+    }
     if (1 == selections) {
         basic.showLeds(`
             # # # . .
