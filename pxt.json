@@ -1,5 +1,5 @@
 {
-    "name": "something to code",
+    "name": "2 player Rock, Paper, Scissors.",
     "description": "",
     "dependencies": {
         "core": "*",
