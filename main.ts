@@ -56,17 +56,24 @@ input.onButtonPressed(Button.AB, function () {
 input.onButtonPressed(Button.B, function () {
     selections += -1
 })
-let selections = 0
+input.onGesture(Gesture.Shake, function () {
+    Reset()
+})
+function Reset () {
+    OLED.init(128, 64)
+    Player_1_Points = 0
+    Player_2_Points = 0
+    Ties = 0
+    Rounds = 0
+    selections = 0
+    Score_Board()
+}
 let Rounds = 0
-let Ties = 0
 let Player_2_Points = 0
 let Player_1_Points = 0
-OLED.init(128, 64)
-Player_1_Points = 0
-Player_2_Points = 0
-Ties = 0
-Rounds = 0
-selections = 0
+let Ties = 0
+let selections = 0
+Reset()
 basic.forever(function () {
     if (0 == selections) {
         selections += 3
