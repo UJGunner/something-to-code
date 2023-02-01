@@ -134,4 +134,10 @@ basic.forever(function () {
     if (0 == Connection) {
         basic.showString("" + (confirm))
     }
+    if (9 < confirm) {
+        confirm += -1
+    }
+    if (0 > confirm) {
+        confirm += 1
+    }
 })
