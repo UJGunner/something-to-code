@@ -135,9 +135,9 @@ basic.forever(function () {
         basic.showString("" + (confirm))
     }
     if (9 < confirm) {
-        confirm += -1
+        confirm = 9
     }
     if (0 > confirm) {
-        confirm += 1
+        confirm = 0
     }
 })
