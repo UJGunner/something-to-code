@@ -1,5 +1,5 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == confirm) {
+    if (receivedNumber == Connection) {
         if (1 == receivedNumber) {
             if (1 == selections) {
                 Ties += 1
