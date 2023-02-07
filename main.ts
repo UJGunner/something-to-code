@@ -1,3 +1,42 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    if (1 == receivedNumber) {
+        if (1 == selections) {
+            Ties += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Wins += 1
+            Score_Board()
+        } else {
+            Loss += 1
+            Score_Board()
+        }
+    }
+    if (2 == receivedNumber) {
+        if (1 == selections) {
+            Loss += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Ties += 1
+            Score_Board()
+        } else {
+            Wins += 1
+            Score_Board()
+        }
+    }
+    if (3 == receivedNumber) {
+        if (1 == selections) {
+            Wins += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Loss += 1
+            Score_Board()
+        } else {
+            Ties += 1
+            Score_Board()
+        }
+    }
+    Rounds += 1
+})
 input.onButtonPressed(Button.A, function () {
     if (0 == Connection) {
         confirm += 1
@@ -17,9 +56,10 @@ function Score_Board () {
 }
 input.onButtonPressed(Button.AB, function () {
     if (0 == Connection) {
+        radio.setFrequencyBand(confirm)
         Connection = confirm
     } else {
-        radio.sendValue("connection" + Connection, selections)
+        radio.sendNumber(selections)
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -32,47 +72,6 @@ input.onButtonPressed(Button.B, function () {
 input.onGesture(Gesture.Shake, function () {
     Reset()
 })
-radio.onReceivedValue(function (name, value) {
-    if (name == "connection" + Connection) {
-        if (1 == value) {
-            if (1 == selections) {
-                Ties += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Wins += 1
-                Score_Board()
-            } else {
-                Loss += 1
-                Score_Board()
-            }
-        }
-        if (2 == value) {
-            if (1 == selections) {
-                Loss += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Ties += 1
-                Score_Board()
-            } else {
-                Wins += 1
-                Score_Board()
-            }
-        }
-        if (3 == value) {
-            if (1 == selections) {
-                Wins += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Loss += 1
-                Score_Board()
-            } else {
-                Ties += 1
-                Score_Board()
-            }
-        }
-        Rounds += 1
-    }
-})
 function Reset () {
     OLED.init(128, 64)
     Wins = 0
@@ -83,9 +82,9 @@ function Reset () {
     Score_Board()
 }
 let Rounds = 0
-let Ties = 0
 let Loss = 0
 let Wins = 0
+let Ties = 0
 let selections = 0
 let confirm = 0
 let Connection = 0
@@ -134,9 +133,9 @@ basic.forever(function () {
         basic.showString("" + (confirm))
     }
     if (9 < confirm) {
-        confirm = 9
+        confirm = 0
     }
     if (0 > confirm) {
-        confirm = 0
+        confirm = 9
     }
 })
