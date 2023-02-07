@@ -1,40 +1,38 @@
 radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == Connection) {
-        if (1 == receivedNumber) {
-            if (1 == selections) {
-                Ties += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Wins += 1
-                Score_Board()
-            } else {
-                Loss += 1
-                Score_Board()
-            }
+    if (1 == receivedNumber) {
+        if (1 == selections) {
+            Ties += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Wins += 1
+            Score_Board()
+        } else {
+            Loss += 1
+            Score_Board()
         }
-        if (2 == receivedNumber) {
-            if (1 == selections) {
-                Loss += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Ties += 1
-                Score_Board()
-            } else {
-                Wins += 1
-                Score_Board()
-            }
+    }
+    if (2 == receivedNumber) {
+        if (1 == selections) {
+            Loss += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Ties += 1
+            Score_Board()
+        } else {
+            Wins += 1
+            Score_Board()
         }
-        if (3 == receivedNumber) {
-            if (1 == selections) {
-                Wins += 1
-                Score_Board()
-            } else if (2 == selections) {
-                Loss += 1
-                Score_Board()
-            } else {
-                Ties += 1
-                Score_Board()
-            }
+    }
+    if (3 == receivedNumber) {
+        if (1 == selections) {
+            Wins += 1
+            Score_Board()
+        } else if (2 == selections) {
+            Loss += 1
+            Score_Board()
+        } else {
+            Ties += 1
+            Score_Board()
         }
     }
 })
@@ -60,7 +58,6 @@ input.onButtonPressed(Button.AB, function () {
     if (0 == Connection) {
         Connection = confirm
     } else {
-        radio.sendNumber(Connection)
         radio.sendNumber(selections)
     }
 })
